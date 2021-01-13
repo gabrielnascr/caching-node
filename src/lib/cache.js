@@ -5,7 +5,7 @@ class Cache {
     this.redis = new Redis({
       host: "127.0.0.1",
       port: 6379,
-      keyPrefix: "cache:",
+
     });
   }
 
@@ -15,8 +15,8 @@ class Cache {
     return value ? JSON.parse(value) : null;
   }
 
-  set(key, value) {
-    return this.redis.set(key, JSON.stringify(value));
+  set(key, value, timeExp) {
+    return this.redis.set(key, JSON.stringify(value), "EX", timeExp);
   }
 
   del(key) {

@@ -17,7 +17,7 @@ class Github {
       };
     });
 
-    cache.set(`repos:${username}`, response);
+    cache.set(`repos:${username}`, response, 60);
     return response;
   }
 
@@ -36,7 +36,7 @@ class Github {
       localtion: data.location,
     };
 
-    cache.set(`userinfo:${username}`, response);
+    cache.set(`userinfo:${username}`, response, 60);
     return response;
   }
 }
